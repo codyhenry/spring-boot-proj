@@ -3,6 +3,7 @@ package com.cody.advisor.calendar.controller;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,8 @@ import com.cody.advisor.calendar.repository.ContentCollectionRepository;
 
 @RestController
 @RequestMapping("/api/content")
+// ! Add security here
+@CrossOrigin
 public class ContentController {
 
   private final ContentCollectionRepository repository;
