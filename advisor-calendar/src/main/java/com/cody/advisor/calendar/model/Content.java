@@ -2,7 +2,6 @@ package com.cody.advisor.calendar.model;
 
 import java.time.LocalDateTime;
 
-import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
 
 public record Content(

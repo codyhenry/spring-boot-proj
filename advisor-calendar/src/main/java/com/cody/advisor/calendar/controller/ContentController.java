@@ -18,6 +18,8 @@ import org.springframework.web.server.ResponseStatusException;
 import com.cody.advisor.calendar.model.Content;
 import com.cody.advisor.calendar.repository.ContentCollectionRepository;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/content")
 // ! Add security here
@@ -44,7 +46,7 @@ public class ContentController {
 
   @ResponseStatus(HttpStatus.CREATED)
   @PostMapping("")
-  public void addNew(@RequestBody Content content) {
+  public void addNew(@Valid @RequestBody Content content) {
     repository.create(content);
   }
 
