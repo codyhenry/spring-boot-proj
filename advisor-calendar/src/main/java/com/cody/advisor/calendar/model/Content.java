@@ -2,10 +2,12 @@ package com.cody.advisor.calendar.model;
 
 import java.time.LocalDateTime;
 
+import org.springframework.data.annotation.Id;
+
 import jakarta.validation.constraints.NotBlank;
 
 public record Content(
-    Integer id,
+    @Id Integer id,
     @NotBlank String title,
     String description,
     Status status,
@@ -13,7 +15,6 @@ public record Content(
     LocalDateTime dateCreated,
     LocalDateTime dateUploaded,
     String url) {
-
 }
 
 /*
