@@ -23,22 +23,22 @@ public class App {
 	}
 
 	// Can add data to database here
-	@Bean
-	CommandLineRunner clr(ContentRepository repository) {
-		// return args -> System.out.println("Hello after everything");
-		// insert data into db
-		return args -> {
-			Content content = new Content(
-					null,
-					"Hello jdbc data",
-					"Now using jdbc data",
-					Status.IDEA,
-					Type.VIDEO,
-					LocalDateTime.now(),
-					null,
-					"");
-			repository.save(content);
-		};
-	}
+	// @Bean
+	// CommandLineRunner clr(ContentRepository repository) {
+	// // return args -> System.out.println("Hello after everything");
+	// // insert data into db
+	// return args -> {
+	// Content content = new Content(
+	// null,
+	// "Hello jdbc data",
+	// "Now using jdbc data",
+	// Status.IDEA,
+	// Type.VIDEO,
+	// LocalDateTime.now(),
+	// null,
+	// "");
+	// repository.save(content);
+	// };
+	// }
 
 }
