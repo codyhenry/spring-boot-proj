@@ -70,4 +70,10 @@ public class ContentController {
     repository.deleteById(id);
   }
 
+  // custom endpoint
+  @GetMapping("/filter/{keyword}")
+  public List<Content> findByTitle(@PathVariable String keyword) {
+    return repository.findAllByTitleContains(keyword);
+  }
+
 }
