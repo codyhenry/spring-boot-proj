@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.cody.advisor.calendar.model.Content;
+import com.cody.advisor.calendar.model.Status;
 import com.cody.advisor.calendar.repository.ContentCollectionRepository;
 import com.cody.advisor.calendar.repository.ContentRepository;
 
@@ -76,4 +77,8 @@ public class ContentController {
     return repository.findAllByTitleContains(keyword);
   }
 
+  @GetMapping("filter/status/{status}")
+  public List<Content> findByStatus(@PathVariable Status status) {
+    return repository.listByStatus(status);
+  }
 }
