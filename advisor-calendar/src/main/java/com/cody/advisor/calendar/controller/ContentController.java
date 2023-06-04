@@ -17,6 +17,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.cody.advisor.calendar.model.Content;
 import com.cody.advisor.calendar.repository.ContentCollectionRepository;
+import com.cody.advisor.calendar.repository.ContentRepository;
 
 import jakarta.validation.Valid;
 
@@ -25,10 +26,10 @@ import jakarta.validation.Valid;
 // ! Add security here
 @CrossOrigin
 public class ContentController {
+  // replaced ContentCollectionRepository
+  private final ContentRepository repository;
 
-  private final ContentCollectionRepository repository;
-
-  public ContentController(ContentCollectionRepository repository) {
+  public ContentController(ContentRepository repository) {
     this.repository = repository;
   }
 
@@ -47,22 +48,26 @@ public class ContentController {
   @ResponseStatus(HttpStatus.CREATED)
   @PostMapping("")
   public void addNew(@Valid @RequestBody Content content) {
-    repository.create(content);
+    // changed from create
+    repository.save(content);
   }
 
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @PutMapping("/{id}")
   public void change(@RequestBody Content content, @PathVariable Integer id) {
-    if (!repository.idExists(id)) {
+    // changed from findById
+    if (!repository.existsById(id)) {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Content not found");
     }
-    repository.update(content);
+    // changed from update
+    repository.save(content);
   }
 
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @DeleteMapping("/{id}")
   public void remove(@PathVariable Integer id) {
-    repository.delete(id);
+    // changed from delete
+    repository.deleteById(id);
   }
 
 }
