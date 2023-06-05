@@ -13,7 +13,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 //Can use this to initialize data in a local database, runs after everything else is up
-//determine when to run this code - set to not run in dev
+//determine when to run this code - set to not run in production
 @Profile("!production")
 @Component
 public class DataLoader implements CommandLineRunner {
